@@ -52,9 +52,6 @@ const LandingPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-indigo-300 mb-6 backdrop-blur-sm">
-                            🚀 The Future of Coding Interviews
-                        </span>
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
                             Track your DSA Journey. <br />
                             <span className="text-indigo-400">Dominate Your Skills.</span>
@@ -73,7 +70,7 @@ const LandingPage = () => {
                     </motion.div>
 
                     {/* Floating Cards Animation */}
-                    <div className="mt-20 relative h-[400px] w-full max-w-5xl mx-auto hidden md:block">
+                    <div className="mt-20 relative h-[600px] w-full max-w-5xl mx-auto hidden md:block">
                         {/* Mock UI Interface */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
@@ -100,7 +97,7 @@ const LandingPage = () => {
                             <motion.div
                                 animate={{ y: [-10, 10, -10] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute top-10 right-10 p-4 bg-indigo-500/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl will-change-transform"
+                                className="absolute top-16 right-20 p-4 bg-indigo-500/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl will-change-transform"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
@@ -116,7 +113,7 @@ const LandingPage = () => {
                             <motion.div
                                 animate={{ y: [10, -10, 10] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute bottom-20 left-20 p-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-xl will-change-transform"
+                                className="absolute bottom-24 left-16 p-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-xl will-change-transform"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
@@ -130,9 +127,9 @@ const LandingPage = () => {
                             </motion.div>
 
                             <motion.div
-                                animate={{ y: [-8, 8, -8], x: [-3, 3, -3] }}
+                                animate={{ y: [-8, 8, -8] }}
                                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                                className="absolute top-32 left-16 p-4 bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 rounded-xl will-change-transform"
+                                className="absolute top-20 left-24 p-4 bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 rounded-xl will-change-transform"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400">
@@ -148,7 +145,7 @@ const LandingPage = () => {
                             <motion.div
                                 animate={{ y: [7, -7, 7] }}
                                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                                className="absolute top-48 right-24 p-4 bg-cyan-500/20 backdrop-blur-sm border border-cyan-500/30 rounded-xl will-change-transform"
+                                className="absolute bottom-20 right-28 p-4 bg-cyan-500/20 backdrop-blur-sm border border-cyan-500/30 rounded-xl will-change-transform"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
