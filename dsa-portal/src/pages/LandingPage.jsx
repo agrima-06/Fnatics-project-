@@ -33,11 +33,8 @@ const LandingPage = () => {
                         <span>DSA.ai</span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Link to="/dashboard">
-                            <Button variant="ghost">Login</Button>
-                        </Link>
-                        <Link to="/dashboard">
-                            <Button variant="neon">Get Started</Button>
+                        <Link to="/login">
+                            <Button variant="neon">Login</Button>
                         </Link>
                     </div>
                 </div>
@@ -65,14 +62,11 @@ const LandingPage = () => {
                             Stop guessing, start improving.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link to="/dashboard">
+                            <Link to="/login">
                                 <Button size="lg" variant="neon" className="h-12 px-8 text-lg">
                                     Start Practicing <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>
                             </Link>
-                            <Button size="lg" variant="outline" className="h-12 px-8 text-lg bg-transparent border-white/10 hover:bg-white/5">
-                                View Demo
-                            </Button>
                         </div>
                     </motion.div>
 

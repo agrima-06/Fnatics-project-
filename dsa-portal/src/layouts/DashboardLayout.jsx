@@ -11,7 +11,8 @@ import {
     LogOut,
     ChevronRight,
     BookOpen,
-    Globe
+    Globe,
+    Gift
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { currentUser } from '../mockData';
@@ -84,6 +85,7 @@ const DashboardLayout = () => {
                     <SidebarItem icon={BookOpen} label="DSA Questions" path="/dsa-questions" isCollapsed={isCollapsed} />
                     <SidebarItem icon={Globe} label="LeetCode Practice" path="/leetcode-practice" isCollapsed={isCollapsed} />
                     <SidebarItem icon={Trophy} label="Leaderboard" path="/leaderboard" isCollapsed={isCollapsed} />
+                    <SidebarItem icon={Gift} label="Rewards" path="/rewards" isCollapsed={isCollapsed} />
                     <SidebarItem icon={User} label="Profile" path="/profile" isCollapsed={isCollapsed} />
                 </nav>
 
@@ -114,7 +116,6 @@ const DashboardLayout = () => {
                         <span className="text-muted-foreground">Welcome back, <span className="text-foreground font-medium">{currentUser.name}</span></span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Button variant="outline" size="sm" className="hidden sm:flex">Daily Challenge</Button>
                         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive transition-colors">
                             <LogOut size={18} />
                         </Button>

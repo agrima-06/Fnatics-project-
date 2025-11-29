@@ -10,6 +10,57 @@ export const currentUser = {
   xp: 15400,
 };
 
+export const rewards = [
+  {
+    id: 1,
+    title: "Premium Theme Pack",
+    description: "Unlock exclusive dark themes and color schemes for your dashboard",
+    xpCost: 500,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    category: "Cosmetic"
+  },
+  {
+    id: 2,
+    title: "Code Mentor Session",
+    description: "1-hour one-on-one mentoring session with a senior developer",
+    xpCost: 2000,
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop",
+    category: "Learning"
+  },
+  {
+    id: 3,
+    title: "Certificate Badge",
+    description: "Display a verified achievement badge on your profile",
+    xpCost: 750,
+    image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=400&h=300&fit=crop",
+    category: "Achievement"
+  },
+  {
+    id: 4,
+    title: "Priority Support",
+    description: "Get priority support for 1 month with faster response times",
+    xpCost: 1200,
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
+    category: "Service"
+  },
+  {
+    id: 5,
+    title: "Custom Avatar Frame",
+    description: "Unlock animated frames and borders for your profile picture",
+    xpCost: 600,
+    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=400&h=300&fit=crop",
+    category: "Cosmetic"
+  },
+  {
+    id: 6,
+    title: "Problem Unlocks (10)",
+    description: "Get access to 10 premium interview questions",
+    xpCost: 1500,
+    image: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?w=400&h=300&fit=crop",
+    category: "Content"
+  }
+];
+
 export const stats = {
   dailyGoal: 5,
   solvedToday: 3,

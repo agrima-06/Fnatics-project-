@@ -7,6 +7,8 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import DSAQuestionsPage from './pages/DSAQuestionsPage';
 import LeetCodePracticePage from './pages/LeetCodePracticePage';
+import LoginPage from './pages/LoginPage';
+import RewardsPage from './pages/RewardsPage';
 import { MockDataProvider } from './context/MockDataContext';
 
 function App() {
@@ -15,12 +17,14 @@ function App() {
       <MockDataProvider>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/dsa-questions" element={<DSAQuestionsPage />} />
             <Route path="/leetcode-practice" element={<LeetCodePracticePage />} />
             <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="/rewards" element={<RewardsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
 

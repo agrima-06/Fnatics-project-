@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Target, CheckCircle, Flame, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -7,20 +7,92 @@ import { Button } from '../components/ui/button';
 import { recentActivity, recommendedQuestions } from '../mockData';
 import { useMockData } from '../context/MockDataContext';
 
-const StatCard = ({ title, value, subtext, icon: Icon, color }) => (
-    <Card className="border-l-4" style={{ borderLeftColor: color }}>
-        <CardContent className="p-6">
-            <div className="flex items-center justify-between space-y-0 pb-2">
-                <p className="text-sm font-medium text-muted-foreground">{title}</p>
-                <Icon className="h-4 w-4 text-muted-foreground" />
+// Generate 30 days of streak data (1 = active, 0 = inactive)
+const generateStreakData = () => {
+    const data = [];
+    const today = new Date();
+    for (let i = 29; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        // Simulate streak pattern: mostly active with occasional gaps
+        const isActive = Math.random() > 0.3;
+        data.push({
+            date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+            active: isActive,
+            count: isActive ? Math.floor(Math.random() * 5) + 1 : 0
+        });
+    }
+    return data;
+};
+
+const streakData = generateStreakData();
+
+const StreakCalendar = () => {
+    const getIntensityClass = (day, isToday) => {
+        if (isToday) {
+            return day.active ? 'bg-green-500/90 hover:bg-green-400' : 'bg-red-500/90 hover:bg-red-400';
+        }
+        if (!day.active) return 'bg-white/5 hover:bg-white/10';
+        if (day.count >= 4) return 'bg-green-500/90 hover:bg-green-400';
+        if (day.count >= 2) return 'bg-green-500/60 hover:bg-green-400/80';
+        return 'bg-green-500/30 hover:bg-green-400/50';
+    };
+
+    return (
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 p-3 bg-card/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl z-50 min-w-[320px]">
+            <div className="text-xs font-medium mb-2 text-center">Last 30 Days Activity</div>
+            <div className="grid grid-cols-10 gap-1">
+                {streakData.map((day, i) => {
+                    const isToday = i === streakData.length - 1;
+                    return (
+                        <div key={`streak-${day.date}-${i}`} className="group relative">
+                            <div className={`w-6 h-6 rounded-sm transition-all ${getIntensityClass(day, isToday)}`} />
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-popover text-popover-foreground text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                {day.date}: {day.count} {day.count === 1 ? 'problem' : 'problems'}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-            <div className="flex items-baseline space-x-2">
-                <div className="text-2xl font-bold">{value}</div>
-                <span className="text-xs text-muted-foreground">{subtext}</span>
+            <div className="flex items-center justify-between mt-2 text-[10px] text-muted-foreground">
+                <span>Less</span>
+                <div className="flex gap-1">
+                    <div className="w-2.5 h-2.5 rounded-sm bg-white/5" />
+                    <div className="w-2.5 h-2.5 rounded-sm bg-green-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-sm bg-green-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-sm bg-green-500/90" />
+                </div>
+                <span>More</span>
             </div>
-        </CardContent>
-    </Card>
-);
+        </div>
+    );
+};
+
+const StatCard = ({ title, value, subtext, icon: Icon, color, showStreakCalendar }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <div 
+            className="relative"
+            onMouseEnter={() => showStreakCalendar && setIsHovered(true)}
+            onMouseLeave={() => showStreakCalendar && setIsHovered(false)}
+        >
+            <Card className="border-l-4" style={{ borderLeftColor: color }}>
+                <CardContent className="p-6">
+                    <div className="flex items-center justify-between space-y-0 pb-2">
+                        <p className="text-sm font-medium text-muted-foreground">{title}</p>
+                        <Icon className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                    <div className="flex items-baseline space-x-2">
+                        <div className="text-2xl font-bold">{value}</div>
+                        <span className="text-xs text-muted-foreground">{subtext}</span>
+                    </div>
+                </CardContent>
+            </Card>
+            {showStreakCalendar && isHovered && <StreakCalendar />}
+        </div>
+    );
+};
 
 const DashboardPage = () => {
     const { stats, topics } = useMockData();
@@ -57,6 +129,7 @@ const DashboardPage = () => {
                     subtext="Keep it up!"
                     icon={Flame}
                     color="#f59e0b"
+                    showStreakCalendar={true}
                 />
                 <StatCard
                     title="Daily Goal"
